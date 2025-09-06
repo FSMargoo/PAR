@@ -309,7 +309,7 @@ int main() {
     }
 
     // Create shader programs
-    ShaderProgram sceneProgram("../shader/vertex.glsl", "../shader/frag.glsl");
+    ShaderProgram sceneProgram("../shader/vertex.glsl", "../shader/ray_cast_frag.glsl");
 
     // Define quad vertices and indices for full-screen rendering
     float quadVertices[] = {
@@ -457,16 +457,16 @@ int main() {
         }
 
         // Prepare ImGui frame
-        // ImGui_ImplOpenGL3_NewFrame();
-        // ImGui_ImplGlfw_NewFrame();
-        // ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 //
-        // // Draw FPS chart
-        // DrawFPSChart(frameRateHistory);
+        // Draw FPS chart
+        DrawFPSChart(frameRateHistory);
 //
-        // // Render ImGui
-        // ImGui::Render();
-        // ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        // Render ImGui
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // Swap buffers and poll events
         glfwSwapBuffers(window);

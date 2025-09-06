@@ -20,6 +20,21 @@ Then build project by CMake in any way you like.
 
 Four scenes are available in four executable files given in CMakeLists.txt.
 
+## Visual Comparison
+
+The following comparison are running under NVIDIA GeForce 4050 Laptop GPU under resolution 1920x1080. The Ray Marching method costed about 15ms to render a frame in 10SPP while PAR only used 5ms to render a frame with even higher quality in the second comparison.
+
+<div align="center">
+
+![](./capture/comparison_1.png)
+![](./capture/comparison_2.png)
+
+</div>
+
+## Method Introduction
+
+A $\LaTeX$ document is provided in this repository for the reference.
+
 ## Reference Videos
 
 Some reference videos are available on following link:

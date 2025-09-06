@@ -501,7 +501,7 @@ float random (in vec2 _st) {
 }
 
 
-#define SAMPLES 200
+#define SAMPLES 10
 
 //////////////////////////////////////////////////////////////
 //     Main program with optimized performance
