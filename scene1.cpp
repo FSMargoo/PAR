@@ -309,7 +309,7 @@ int main() {
     }
 
     // Create shader programs
-    ShaderProgram sceneProgram("../shader/vertex.glsl", "../shader/ray_cast_frag.glsl");
+    ShaderProgram sceneProgram("../shader/vertex.glsl", "../shader/frag.glsl");
 
     // Define quad vertices and indices for full-screen rendering
     float quadVertices[] = {
@@ -406,15 +406,6 @@ int main() {
         float currentTime = static_cast<float>(glfwGetTime());
         rotationAngle     = currentTime * rotationSpeed;
 
-        // Update circle position to orbit around screen center
-        // if (!circles.empty()) {
-        //     circles[0].center.x = 0.5f + orbitRadius * cos(rotationAngle);
-        //     circles[0].center.y = 0.5f + orbitRadius * sin(rotationAngle);
-//
-        //     // Update the circle SSBO with new position
-        //     circleSSBO.UpdateData(circles.data(), circles.size() * sizeof(CircleData));
-        // }
-
         // Create queries for timing measurement
         GLuint queryIDs[2];
         glGenQueries(2, queryIDs);
@@ -460,10 +451,10 @@ int main() {
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-//
+
         // Draw FPS chart
         DrawFPSChart(frameRateHistory);
-//
+
         // Render ImGui
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

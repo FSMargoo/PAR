@@ -509,21 +509,18 @@ int main() {
         float deltaTime = static_cast<float>(currentTime - lastFrameTime);
         lastFrameTime = currentTime;
 
-        // 开始ImGui帧
-        // ImGui_ImplOpenGL3_NewFrame();
-        // ImGui_ImplGlfw_NewFrame();
-        // ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
 
         if (queryStarted) {
             glEndQuery(GL_TIME_ELAPSED);
 
-            // 获取上一帧的查询结果
             GLuint64 timeElapsed;
             glGetQueryObjectui64v(queryIDs[1 - currentQuery], GL_QUERY_RESULT, &timeElapsed);
             renderTime = timeElapsed;
 
-            // 更新历史记录
             updateTimeHistory(deltaTime, static_cast<float>(renderTime) / 1000000.0f); // 转换为毫秒
 
             queryStarted = false;
@@ -540,16 +537,13 @@ int main() {
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-        // 切换查询对象
         currentQuery = 1 - currentQuery;
 
-        // 绘制性能窗口
-        // drawPerformanceWindow();
-//
-//
-        // // Render ImGui
-        // ImGui::Render();
-        // ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        drawPerformanceWindow();
+
+        // Render ImGui
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 
 

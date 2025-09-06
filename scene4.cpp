@@ -435,14 +435,9 @@ int main() {
 
     // Initialize timing variables
     std::vector<float> frameRateHistory;
-    float              rotationAngle = 0.0f;
-    const float        rotationSpeed = 0.5f; // radians per second
-    const float        orbitRadius   = 0.2f; // normalized screen units
 
     // Main render loop
     while (!glfwWindowShouldClose(window)) {
-        float currentTime = static_cast<float>(glfwGetTime());
-
         // Create queries for timing measurement
         GLuint queryIDs[2];
         glGenQueries(2, queryIDs);
@@ -485,16 +480,16 @@ int main() {
         }
 
         // Prepare ImGui frame
-        // ImGui_ImplOpenGL3_NewFrame();
-        // ImGui_ImplGlfw_NewFrame();
-        // ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
-        // // Draw FPS chart
-        // DrawFPSChart(frameRateHistory);
+        // Draw FPS chart
+        DrawFPSChart(frameRateHistory);
 
-        // // Render ImGui
-        // ImGui::Render();
-        // ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        // Render ImGui
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         // Swap buffers and poll events
         glfwSwapBuffers(window);
